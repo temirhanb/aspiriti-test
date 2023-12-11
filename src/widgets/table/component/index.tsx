@@ -18,24 +18,22 @@ export const TableWidget = () => {
     }
 
   }
-  const hide = false
+  const hide = true
   if (!hide) {
     return <div className={'flex h-[200px] justify-center items-center'}><Preloader/></div>
   }
 
   return (
-    <div className={'m-10 flex flex-col'}>
-      <table>
-        <tbody>
-        <HeadersTable/>
-        <ContentTable
-          data-testid={'peoples'}
-          key={nanoid(5)}
-          id={132}
-          actor={'fads'}
-        />
-        </tbody>
-      </table>
-    </div>
+    <table>
+      <tbody  className={'mt-10 flex flex-col w-[720px]'}>
+      <HeadersTable/>
+      <ContentTable
+        data-testid={'peoples'}
+        key={nanoid(5)}
+        id={132}
+        actor={'fads'}
+      />
+      </tbody>
+    </table>
   )
 }

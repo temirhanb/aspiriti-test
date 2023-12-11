@@ -2,10 +2,10 @@ import React from "react";
 
 export const HeadersTable: React.FC = () => {
 
-  const names: Array<string> = ['Name', 'Height', 'Mass', 'Hair color', 'Action']
+
   return (
     <tr className={'h-12 border-b-2'}>
-      {names.map((item, index) => <th key={index} className={'text-left'}>{item}</th>)}
+      <th className={'text-left'}>Name</th>
     </tr>
   )
 }
