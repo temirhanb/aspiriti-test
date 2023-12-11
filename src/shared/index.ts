@@ -1,3 +1,4 @@
 export * from './ui'
 export * from './types'
-export * from './assets'
+export * from './svg'
+export * from './enum'

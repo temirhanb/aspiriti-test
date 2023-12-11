@@ -1,35 +1,67 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
 
-export interface CounterState {
-  value: number
+export interface ITodo {
+  id: string;
+  name: string;
+  createAt: string;
+  title: string;
+  status: number;
 }
 
-const initialState: CounterState = {
-  value: 0,
-}
+const initialState = [] as ITodo[]
 
 export const todoListSlice = createSlice({
-  name: 'counter',
+  name: 'todoList',
   initialState,
   reducers: {
-    increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.value += 1
+    setTodoList: (state, action: PayloadAction<ITodo[]>) => {
+      return action.payload
     },
-    decrement: (state) => {
-      state.value -= 1
+
+    createTodo: (state, action) => {
+      const newTodo = {
+        id: nanoid(5),
+        name: action.payload,
+        createAt: new Date().toString(),
+        title: '',
+        status: 1,
+      };
+      state.push(newTodo)
     },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
+    editTodoList: (state, action) => {
+      const newTodo = {
+        id: nanoid(5),
+        name: action.payload,
+        createAt: new Date().toString(),
+        title: '',
+        status: 1,
+      };
+      state.push(newTodo)
+    },
+    completeTodoList: (state, action) => {
+      const newTodo = {
+        id: nanoid(5),
+        name: action.payload,
+        createAt: new Date().toString(),
+        title: '',
+        status: 1,
+      };
+      state.push(newTodo)
+    },
+    deleteTodoList: (state, action) => {
+      const newTodo = {
+        id: nanoid(5),
+        name: action.payload,
+        createAt: new Date().toString(),
+        title: '',
+        status: 1,
+      };
+      state.push(newTodo)
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = todoListSlice.actions
+export const {setTodoList, createTodo} = todoListSlice.actions
 
 export default todoListSlice.reducer

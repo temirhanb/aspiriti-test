@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import todoListReducer from './slices/todoList'
+import currentTaskReducer from './slices/currentTask'
 
 
 export const store = configureStore({
   reducer: {
-    todoList: todoListReducer
+    todoList: todoListReducer,
+    currentTask: currentTaskReducer
   },
 })
 

@@ -1,34 +1,42 @@
 import React, { useState } from "react";
+import { ITodo } from "../../../../store/slices/todoList";
+import { useAppDispatch } from "../../../../store/hook";
+import { setCurrentTask } from "../../../../store/slices/currentTask";
+import { EditIcon } from "../../../../shared";
+
 
 interface IProps {
-  id: any;
-  actor: any;
+  item: ITodo
 }
 
-export const ContentTable: React.FC<IProps> = ({}) => {
+export const ContentTable: React.FC<IProps> = ({item}) => {
+
+  const dispatch = useAppDispatch()
 
   const [hoverState, setHoverState] = useState(false)
-  const handlerSetActor = (item: any) => {
 
+  const handlerSetActor = () => {
+    dispatch(setCurrentTask(item))
   }
 
   return (
     <tr
       onMouseEnter={() => setHoverState(true)}
       onMouseLeave={() => setHoverState(false)}
-      onClick={() => handlerSetActor(123)}
-      className={'h-14 border-b-2 flex items-center hover:opacity-70 cursor-pointer'}
+      onClick={handlerSetActor}
+      className={
+        `h-14 border-t-2 ${item.status === 2 ?
+          'bg-[#00CC431F] border-[#00CC4349]' :
+          ''}
+         flex items-center  hover:opacity-70 cursor-pointer`
+      }
     >
       <td className={'text-slate-800 grow'}>
-        hello world
+        {item.name}
       </td>
-      <div className={`${hoverState ? 'flex' : 'hidden'}`}>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"
-             className="w-6 h-6">
-          <path strokeLinecap="round" strokeLinejoin="round"
-                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"/>
-        </svg>
-      </div>
+      <td className={`${hoverState ? 'flex' : 'hidden'}`}>
+        <EditIcon/>
+      </td>
     </tr>
   )
 }
