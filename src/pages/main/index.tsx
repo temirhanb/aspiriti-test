@@ -20,7 +20,7 @@ export const MainPage: React.FC = () => {
         <>
           <div
             onClick={closeForm}
-            className={'flex z-10 fixed p-[50%] bg-[#0000004C]'}
+            className={'flex z-10 fixed p-[100%] '}
           />
           <CartTaskWidget item={currentTask.item}/>
         </>

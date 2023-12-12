@@ -28,10 +28,6 @@ module.exports = {
       },
       {test: /\.([cm]?ts|tsx)$/, loader: "ts-loader"},
       {
-        test: /\.(png|jpg)$/,
-        loader: 'url-loader'
-      },
-      {
         use: ['style-loader', 'css-loader', {
           loader: "postcss-loader",
           options: {
@@ -43,24 +39,6 @@ module.exports = {
         }],
         test: /\.css$/i,
       },
-      {
-        test: /\.(png|jpg|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[ext]',
-        },
-      }
     ]
   },
   plugins: [

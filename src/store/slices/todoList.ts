@@ -1,4 +1,4 @@
-import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface ITodo {
   id: string;
@@ -19,49 +19,24 @@ export const todoListSlice = createSlice({
     },
 
     createTodo: (state, action) => {
-      const newTodo = {
-        id: nanoid(5),
-        name: action.payload,
-        createAt: new Date().toString(),
-        title: '',
-        status: 1,
-      };
-      state.push(newTodo)
+
+      state.push(action.payload)
     },
     editTodoList: (state, action) => {
-      const newTodo = {
-        id: nanoid(5),
-        name: action.payload,
-        createAt: new Date().toString(),
-        title: '',
-        status: 1,
-      };
-      state.push(newTodo)
+      console.log(action.payload)
+      const completeTodo = action.payload
+      const updatedTaskIdx = state.findIndex(({ id }) => id === completeTodo.id);
+      state[updatedTaskIdx] = completeTodo;
+      return state
     },
-    completeTodoList: (state, action) => {
-      const newTodo = {
-        id: nanoid(5),
-        name: action.payload,
-        createAt: new Date().toString(),
-        title: '',
-        status: 1,
-      };
-      state.push(newTodo)
-    },
-    deleteTodoList: (state, action) => {
-      const newTodo = {
-        id: nanoid(5),
-        name: action.payload,
-        createAt: new Date().toString(),
-        title: '',
-        status: 1,
-      };
-      state.push(newTodo)
+
+    deleteTodoList: (state, action: PayloadAction<ITodo[]>) => {
+      return action.payload
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {setTodoList, createTodo} = todoListSlice.actions
+export const {setTodoList, createTodo, deleteTodoList, editTodoList} = todoListSlice.actions
 
 export default todoListSlice.reducer

@@ -17,20 +17,17 @@ export const currentTaskSlice = createSlice({
   initialState,
   reducers: {
     setCurrentTask: (state, action: PayloadAction<ITodo>) => {
-      state.isOpen = !state.isOpen
+      state.isOpen = true
       state.item = action.payload
     },
     closeCurrentTask: (state) => {
       state.isOpen = false
-    },
-    editCurrentTask: (state, action: PayloadAction<ITodo>) => {
-      state.isOpen = false
-      state.item = {...state.item, ...action.payload}
+      state.item = {} as ITodo
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {setCurrentTask, closeCurrentTask, editCurrentTask} = currentTaskSlice.actions
+export const {setCurrentTask, closeCurrentTask} = currentTaskSlice.actions
 
 export default currentTaskSlice.reducer
