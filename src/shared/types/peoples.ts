@@ -1,4 +1,4 @@
-export interface IActor{
+export interface IActor {
   name: string,
   height: number,
   mass: number,

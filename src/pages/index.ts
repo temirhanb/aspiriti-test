@@ -1,2 +1,2 @@
-export * from './main'
-export * from './notFound'
+export * from './main';
+export * from './notFound';

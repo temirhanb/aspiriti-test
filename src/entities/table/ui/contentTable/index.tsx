@@ -6,18 +6,18 @@ import { EditIcon } from "../../../../shared";
 
 
 interface IProps {
-  item: ITodo
+  item: ITodo;
 }
 
 export const ContentTable: React.FC<IProps> = ({item}) => {
 
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  const [hoverState, setHoverState] = useState(false)
+  const [hoverState, setHoverState] = useState(false);
 
   const handlerSetActor = () => {
-    dispatch(setCurrentTask(item))
-  }
+    dispatch(setCurrentTask(item));
+  };
 
   return (
     <tr
@@ -38,5 +38,5 @@ export const ContentTable: React.FC<IProps> = ({item}) => {
         <EditIcon/>
       </td>
     </tr>
-  )
-}
+  );
+};

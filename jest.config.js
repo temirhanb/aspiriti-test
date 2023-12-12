@@ -1,4 +1,4 @@
-const esModules = [ "nanoid"].join("|");
+const esModules = ["nanoid"].join("|");
 
 module.exports = {
   setupFilesAfterEnv: ['<rootDir>/setUpTest.js'],

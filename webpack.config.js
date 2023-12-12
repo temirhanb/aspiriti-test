@@ -1,8 +1,8 @@
-const path = require('path')
+const path = require('path');
 const autoprefixer = require("autoprefixer");
 const tailwindcss = require("tailwindcss");
 const HtmlPlugin = require("html-webpack-plugin");
-const { HotModuleReplacementPlugin } = require('webpack');
+const {HotModuleReplacementPlugin} = require('webpack');
 
 module.exports = {
   mode: "development",
@@ -53,4 +53,4 @@ module.exports = {
     filename: "[name].js"
   },
 
-}
+};

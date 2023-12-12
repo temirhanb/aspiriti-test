@@ -1,2 +1,2 @@
-export * from './table'
-export * from './formTodo'
+export * from './table';
+export * from './formTodo';

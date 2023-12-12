@@ -1,2 +1,2 @@
-export * from './contentTable'
-export * from './headersTable'
+export * from './contentTable';
+export * from './headersTable';

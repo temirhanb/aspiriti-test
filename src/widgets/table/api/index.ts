@@ -7,7 +7,7 @@ export const getAllTodoList = async (): Promise<ITodo[]> => {
     headers: {
       "Content-Type": 'application/json',
     }
-  })
+  });
 
-  return data
-}
+  return data;
+};

@@ -6,9 +6,9 @@ export const editCurrentTaskPut = async (item: ITodo): Promise<ITodo> => {
   try {
     const {data} = await axios.put(API, {
       item
-    })
-    return data
+    });
+    return data;
   } catch (e) {
-    throw (e)
+    throw (e);
   }
-}
+};

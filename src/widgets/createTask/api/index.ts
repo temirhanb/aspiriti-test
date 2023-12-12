@@ -8,9 +8,9 @@ export const postCreateTodo = async (name: string): Promise<ITodo> => {
       headers: {
         "Content-Type": 'application/json',
       }
-    })
-    return data.model
+    });
+    return data.model;
   } catch (e) {
-    throw (e)
+    throw (e);
   }
-}
+};

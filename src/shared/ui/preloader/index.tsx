@@ -14,5 +14,5 @@ export const Preloader: React.FC = () => {
       </svg>
       <span className="sr-only">Loading...</span>
     </div>
-  )
-}
+  );
+};

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface ITodo {
   id: string;
@@ -6,37 +6,41 @@ export interface ITodo {
   createAt: string;
   title: string;
   status: number;
+  subtask?: {
+    index: number;
+
+  };
 }
 
-const initialState = [] as ITodo[]
+const initialState = [] as ITodo[];
 
 export const todoListSlice = createSlice({
   name: 'todoList',
   initialState,
   reducers: {
     setTodoList: (state, action: PayloadAction<ITodo[]>) => {
-      return action.payload
+      return action.payload;
     },
 
     createTodo: (state, action) => {
 
-      state.push(action.payload)
+      state.push(action.payload);
     },
     editTodoList: (state, action) => {
-      console.log(action.payload)
-      const completeTodo = action.payload
-      const updatedTaskIdx = state.findIndex(({ id }) => id === completeTodo.id);
+      console.log(action.payload);
+      const completeTodo = action.payload;
+      const updatedTaskIdx = state.findIndex(({id}) => id === completeTodo.id);
       state[updatedTaskIdx] = completeTodo;
-      return state
+      return state;
     },
 
     deleteTodoList: (state, action: PayloadAction<ITodo[]>) => {
-      return action.payload
+      return action.payload;
     },
   },
-})
+});
 
 // Action creators are generated for each case reducer function
-export const {setTodoList, createTodo, deleteTodoList, editTodoList} = todoListSlice.actions
+export const {setTodoList, createTodo, deleteTodoList, editTodoList} = todoListSlice.actions;
 
-export default todoListSlice.reducer
+export default todoListSlice.reducer;

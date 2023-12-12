@@ -9,17 +9,17 @@ import { editCurrentTaskPut } from "../../../../widgets/cartTask/api/editCurrent
 import { CompleteIcon, DeleteIcon, EditIcon, FormAction } from "../../../../shared";
 
 interface IProps {
-  item: ITodo
-  closeForm: () => void
+  item: ITodo;
+  closeForm: () => void;
 }
 
 export const FormTodo: React.FC<IProps> = ({item, closeForm}) => {
 
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  const [currentButtonAction, setCurrentButtonAction] = useState('edit')
+  const [currentButtonAction, setCurrentButtonAction] = useState('edit');
 
-  const {name, title, status, id, createAt} = item
+  const {name, title, status, id, createAt} = item;
 
   const formik = useFormik({
     initialValues: {
@@ -32,53 +32,53 @@ export const FormTodo: React.FC<IProps> = ({item, closeForm}) => {
       title: Yup.string().max(250),
     }),
     onSubmit: (values) => {
-      console.log('submit', values)
+      console.log('submit', values);
 
       switch (currentButtonAction) {
         case FormAction.edit: {
 
           const editTodo = {
             id, createAt, status, name: values.name, title: values.title
-          }
+          };
           editCurrentTaskPut(editTodo).then(res => {
-            dispatch(editTodoList(res))
-          })
-          closeForm()
-          break
+            dispatch(editTodoList(res));
+          });
+          closeForm();
+          break;
         }
         case FormAction.completed: {
 
           const completeTodo = {
             id, createAt, status: 2, name: values.name, title: values.title
-          }
+          };
           editCurrentTaskPut(completeTodo).then(res => {
-            dispatch(editTodoList(res))
-          })
-          closeForm()
-          break
+            dispatch(editTodoList(res));
+          });
+          closeForm();
+          break;
         }
         case FormAction.delete: {
 
           deletedCurrentTask(id).then(res => {
-            dispatch(deleteTodoList(res))
-          })
-          closeForm()
-          break
+            dispatch(deleteTodoList(res));
+          });
+          closeForm();
+          break;
         }
       }
-      formik.resetForm()
+      formik.resetForm();
     },
   });
 
   const handlerEditButton = () => {
-    setCurrentButtonAction(FormAction.edit)
-  }
+    setCurrentButtonAction(FormAction.edit);
+  };
   const handlerCompleteButton = () => {
-    setCurrentButtonAction(FormAction.completed)
-  }
+    setCurrentButtonAction(FormAction.completed);
+  };
   const handlerDeleteButton = () => {
-    setCurrentButtonAction(FormAction.delete)
-  }
+    setCurrentButtonAction(FormAction.delete);
+  };
 
   return (
     <form onSubmit={formik.handleSubmit} className={'mt-[20px] text-sm mx-[20px]'}>
@@ -130,5 +130,5 @@ export const FormTodo: React.FC<IProps> = ({item, closeForm}) => {
         </button>
       </div>
     </form>
-  )
-}
+  );
+};

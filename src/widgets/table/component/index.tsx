@@ -7,19 +7,19 @@ import { useAppDispatch, useAppSelector } from "../../../store/hook";
 import { getAllTodoList } from "../api";
 
 export const TableWidget = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  const todoList = useAppSelector((state: RootState) => state.todoList)
+  const todoList = useAppSelector((state: RootState) => state.todoList);
 
   useEffect(() => {
     getAllTodoList().then(res => {
-      console.log(res)
-      dispatch(setTodoList(res))
-    })
-  }, [])
+      console.log(res);
+      dispatch(setTodoList(res));
+    });
+  }, []);
 
   if (todoList.length === 0) {
-    return <div className={'flex h-[200px] justify-center items-center'}><Preloader/></div>
+    return <div className={'flex h-[200px] justify-center items-center'}><Preloader/></div>;
   }
 
   return (
@@ -34,5 +34,5 @@ export const TableWidget = () => {
       ))}
       </tbody>
     </table>
-  )
-}
+  );
+};

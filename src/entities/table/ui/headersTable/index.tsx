@@ -6,5 +6,5 @@ export const HeadersTable: React.FC = () => {
     <tr className={'h-12 '}>
       <th className={'text-left'}>Name</th>
     </tr>
-  )
-}
+  );
+};

@@ -1,12 +1,13 @@
-import { StatusTaskEnum } from "../../../../shared";
 import React from "react";
+import { StatusTaskEnum } from "../../../../shared";
 
 interface IProps {
-  closeForm: () => void
-  status: number
+  closeForm: () => void;
+  status: number;
 }
 
 export const HeaderFormTodo: React.FC<IProps> = ({closeForm, status}) => {
+
   return (
     <div className={'mt-[20px] mx-[20px] flex justify-between'}>
           <span>
@@ -19,5 +20,5 @@ export const HeaderFormTodo: React.FC<IProps> = ({closeForm, status}) => {
         </svg>
       </button>
     </div>
-  )
-}
+  );
+};

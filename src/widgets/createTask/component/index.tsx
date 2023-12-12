@@ -2,20 +2,16 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import { useAppDispatch } from "../../../store/hook";
-import { createTodo } from "../../../store/slices/todoList";
+import { useAppDispatch } from '../../../store/hook';
+import { createTodo } from '../../../store/slices/todoList';
 import { CreateIcon } from "../../../shared";
 import { postCreateTodo } from "../api";
 
-
 export const CreateTaskWidget: React.FC = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState('');
 
-  const handlerCreateTask = () => {
-
-  }
 
   const formik = useFormik({
     initialValues: {
@@ -26,11 +22,10 @@ export const CreateTaskWidget: React.FC = () => {
         .string().min(3).max(100).required(),
     }),
     onSubmit: (values) => {
-      postCreateTodo(values.name).then(res => dispatch(createTodo(res)))
-      formik.resetForm()
+      postCreateTodo(values.name).then(res => dispatch(createTodo(res)));
+      formik.resetForm();
     },
   });
-
   return (
     <form
       onSubmit={formik.handleSubmit}
@@ -48,7 +43,7 @@ export const CreateTaskWidget: React.FC = () => {
         onChange={formik.handleChange}
       />
       <button
-        onClick={handlerCreateTask}
+        type={'submit'}
         className={`
         flex ${formik.errors.name ? 'bg-[#B9031EFF]' : 'bg-[#019c2f]'} w-[100px] hover:opacity-70 items-center justify-center
         `}
@@ -56,5 +51,5 @@ export const CreateTaskWidget: React.FC = () => {
         <CreateIcon/>
       </button>
     </form>
-  )
+  );
 };

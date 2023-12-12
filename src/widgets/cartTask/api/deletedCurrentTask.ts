@@ -8,9 +8,9 @@ export const deletedCurrentTask = async (id: string): Promise<ITodo[]> => {
       headers: {
         "Content-Type": 'application/json',
       }
-    })
-    return data
+    });
+    return data;
   } catch (e) {
-    throw (e)
+    throw (e);
   }
-}
+};

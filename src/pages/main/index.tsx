@@ -6,11 +6,11 @@ import { closeCurrentTask } from "../../store/slices/currentTask";
 
 
 export const MainPage: React.FC = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  const currentTask = useAppSelector((state: RootState) => state.currentTask)
+  const currentTask = useAppSelector((state: RootState) => state.currentTask);
 
-  const closeForm = () => dispatch(closeCurrentTask())
+  const closeForm = () => dispatch(closeCurrentTask());
 
   return (
     <div className={'flex items-center justify-center h-[100%] flex-col'}>
@@ -26,5 +26,5 @@ export const MainPage: React.FC = () => {
         </>
       )}
     </div>
-  )
-}
+  );
+};
