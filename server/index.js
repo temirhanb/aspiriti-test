@@ -15,4 +15,3 @@ app.use(router);
 app.listen(PORT, () => {
   console.log('Server start on port: ' + PORT);
 });
-
