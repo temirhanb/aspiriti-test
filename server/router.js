@@ -1,5 +1,4 @@
 const {Router} = require("express");
-const cors = require('cors');
 const {getAll, createTodo, deleteTodo, editTodo} = require("./controller");
 
 const router = Router();
