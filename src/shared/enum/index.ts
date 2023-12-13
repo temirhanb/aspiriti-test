@@ -9,3 +9,9 @@ export enum FormAction {
   completed = "completed",
   delete = "delete",
 }
+
+export enum StatusRequest{
+  LOADING = 'loading',
+    SUCCESS = 'completed',
+    ERROR = 'error'
+}

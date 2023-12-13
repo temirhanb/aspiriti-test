@@ -3,10 +3,10 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 
 import { useAppDispatch } from "../../../../store/hook";
-import { deleteTodoList, editTodoList, ITodo } from "../../../../store/slices/todoList";
-import { deletedCurrentTask } from "../../../../widgets/cartTask/api/deletedCurrentTask";
-import { editCurrentTaskPut } from "../../../../widgets/cartTask/api/editCurrentTaskPut";
+import { ITodo } from "../../../../store/slices/todoList";
 import { CompleteIcon, DeleteIcon, EditIcon, FormAction } from "../../../../shared";
+import { editTodosThunk } from "../../../../store/thunks/editTodoThunk";
+import { deleteTodosThunk } from "../../../../store/thunks/deleteTodosThunk";
 
 interface IProps {
   item: ITodo;
@@ -32,7 +32,6 @@ export const FormTodo: React.FC<IProps> = ({item, closeForm}) => {
       title: Yup.string().max(250),
     }),
     onSubmit: (values) => {
-      console.log('submit', values);
 
       switch (currentButtonAction) {
         case FormAction.edit: {
@@ -40,9 +39,8 @@ export const FormTodo: React.FC<IProps> = ({item, closeForm}) => {
           const editTodo = {
             id, createAt, status, name: values.name, title: values.title
           };
-          editCurrentTaskPut(editTodo).then(res => {
-            dispatch(editTodoList(res));
-          });
+          dispatch(editTodosThunk(editTodo));
+
           closeForm();
           break;
         }
@@ -51,17 +49,14 @@ export const FormTodo: React.FC<IProps> = ({item, closeForm}) => {
           const completeTodo = {
             id, createAt, status: 2, name: values.name, title: values.title
           };
-          editCurrentTaskPut(completeTodo).then(res => {
-            dispatch(editTodoList(res));
-          });
+          dispatch(editTodosThunk(completeTodo));
+
           closeForm();
           break;
         }
         case FormAction.delete: {
+          dispatch(deleteTodosThunk(id));
 
-          deletedCurrentTask(id).then(res => {
-            dispatch(deleteTodoList(res));
-          });
           closeForm();
           break;
         }

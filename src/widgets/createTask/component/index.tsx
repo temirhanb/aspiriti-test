@@ -1,17 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import { useAppDispatch } from '../../../store/hook';
-import { createTodo } from '../../../store/slices/todoList';
 import { CreateIcon } from "../../../shared";
-import { postCreateTodo } from "../api";
+import { createTodosThunk } from "../../../store/thunks/createTodoThunk";
 
 export const CreateTaskWidget: React.FC = () => {
   const dispatch = useAppDispatch();
-
-  const [value, setValue] = useState('');
-
 
   const formik = useFormik({
     initialValues: {
@@ -22,7 +18,7 @@ export const CreateTaskWidget: React.FC = () => {
         .string().min(3).max(100).required(),
     }),
     onSubmit: (values) => {
-      postCreateTodo(values.name).then(res => dispatch(createTodo(res)));
+      dispatch(createTodosThunk(values.name));
       formik.resetForm();
     },
   });
